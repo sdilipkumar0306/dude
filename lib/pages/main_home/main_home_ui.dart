@@ -13,6 +13,7 @@ class _MainHomeUiState extends State<MainHomeUi> {
   @override
   Widget build(BuildContext context) {
     return AppMenuUi(
+      
         body: Container(
       color: getPrimaryBgColor(context),
       child: const Center(

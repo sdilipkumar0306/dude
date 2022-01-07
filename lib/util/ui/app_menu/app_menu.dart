@@ -1,4 +1,3 @@
-import 'package:dude/util/ui/app_menu/swip_gesture.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +18,8 @@ class _AppMenuUiState extends State<AppMenuUi> with SingleTickerProviderStateMix
   late AnimationController _animationController;
   DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start;
 
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -27,10 +28,6 @@ class _AppMenuUiState extends State<AppMenuUi> with SingleTickerProviderStateMix
   }
 
   _toggleAnimation() {
-    print("animation");
-    setState(() {
-      drawerDragStartBehavior = DragStartBehavior.down;
-    });
     _animationController.isDismissed ? _animationController.forward() : _animationController.reverse();
   }
 
@@ -65,6 +62,7 @@ class _AppMenuUiState extends State<AppMenuUi> with SingleTickerProviderStateMix
                   elevation: _animationController.isDismissed ? 0 : 5,
                   shadowColor: Colors.white,
                   child: Scaffold(
+                    key: _key,
                     onDrawerChanged: (isOpened) {
                       _toggleAnimation();
                     },
@@ -78,11 +76,17 @@ class _AppMenuUiState extends State<AppMenuUi> with SingleTickerProviderStateMix
                     backgroundColor: Colors.white,
                     appBar: AppBar(
                       elevation: 0,
-
                       // leading: IconButton(
-                      //   onPressed: () {
-                      //     print("aaaaaaaaaaaaaaaa");
-                      //     _toggleAnimation();
+                      //   onPressed: () async {
+                      //     // print("aaaaaaaaaaaaaaaa");
+                      //     await _toggleAnimation();
+                      //     print(_key.currentState?.isDrawerOpen);
+                      //     if (_key.currentState?.isDrawerOpen ?? false) {
+                      //       Navigator.pop(context);
+                      //     } else {
+                      //       // _key.currentState?.openDrawer();
+
+                      //     }
                       //   },
                       //   icon: AnimatedIcon(
                       //     icon: AnimatedIcons.menu_close,
@@ -93,14 +97,6 @@ class _AppMenuUiState extends State<AppMenuUi> with SingleTickerProviderStateMix
                       actions: const [],
                     ),
                     body: widget.body,
-                    // body: SwipeDetector(
-                    //     onSwipeLeft: () {
-                    //       _toggleAnimation();
-                    //     },
-                    //     onSwipeRight: () {
-                    //       _toggleAnimation();
-                    //     },
-                    //     child: widget.body),
                   ),
                 ),
               )

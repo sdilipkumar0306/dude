@@ -1,13 +1,7 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:dude/pages/sign_in_up/login_page_ui.dart';
-import 'package:dude/util/constants/app_constants.dart';
 import 'package:dude/util/ui/common_ui.dart';
-import 'package:dude/util/ui/text_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

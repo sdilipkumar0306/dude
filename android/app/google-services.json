@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "336025554770",
+    "project_id": "dude-0306",
+    "storage_bucket": "dude-0306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336025554770:android:259cd68df93b8c3e10748b",
+        "android_client_info": {
+          "package_name": "com.example.dude"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336025554770-h1qfbje105ipp70c1gvhn80083s8s0n7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYG4LB-HIkvTK9L-GJImdvjNio3R9h_5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336025554770-h1qfbje105ipp70c1gvhn80083s8s0n7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,6 @@
+import 'package:dude/pages/main_home/messages.dart';
+import 'package:dude/pages/main_home/profile.dart';
+import 'package:dude/pages/sign_in_up/login_page_ui.dart';
 import 'package:dude/util/ui/common_ui.dart';
 import 'package:dude/util/ui/text_field.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +10,9 @@ class DrawerData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<DrawerItem> drawer = [
-      const DrawerItem('Profile', Icons.account_circle),
+      // const DrawerItem('Home', Icons.home),
       const DrawerItem('Messages', Icons.message),
-      const DrawerItem('Activity', Icons.compare_arrows),
-      const DrawerItem('Bookmarks', Icons.bookmark),
+      const DrawerItem('Profile', Icons.account_circle),
       const DrawerItem('Sign Out', Icons.exit_to_app),
     ];
     return Container(
@@ -31,7 +33,22 @@ class DrawerData extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 12, left: 12),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      // onTap(index);
+                      Navigator.pop(context);
+                      switch (index) {
+                        case 0:
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MessagesUI()));
+                          break;
+                        case 1:
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileUI()));
+                          break;
+                        case 2:
+                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const LoginUi()), (route) => false);
+                          break;
+                        default:
+                      }
+                    },
                     child: SizedBox(
                       height: 48,
                       width: double.infinity,
@@ -56,51 +73,6 @@ class DrawerData extends StatelessWidget {
                   ),
                 );
               }),
-          const Divider(
-            color: Colors.white54,
-          ),
-          SizedBox(
-            height: 48,
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.share),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(
-                    'Tell a Friend',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 48,
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.help_outline),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(
-                    'Help and Feedback',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                )
-              ],
-            ),
-          )
         ],
       ),
     );
@@ -132,11 +104,7 @@ class DrawerData extends StatelessWidget {
             )
           ],
         ),
-        IconButton(
-            onPressed: () {
-              print("dark moda");
-            },
-            icon: const Icon(Icons.light_mode))
+        IconButton(onPressed: () {}, icon: const Icon(Icons.light_mode))
       ],
     );
   }
